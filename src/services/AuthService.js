@@ -3,7 +3,9 @@
  */
 import request from 'reqwest';
 import when from 'when';
-import {LOGIN_URL, SIGNUP_URL} from '../constants/LoginConstants';
+import LOGIN_URL from '../constants/LoginConstants';
+import SIGNUP_URL from '../constants/LoginConstants';
+
 import LoginActions from '../actions/LoginActions';
 
 class AuthService {
@@ -27,7 +29,7 @@ class AuthService {
 
     signup(username, password, extra) {
         return this.handleAuth(when(request({
-            url: SIGN_UP,
+            url: SIGNUP_URL,
             method: 'POST',
             crossOrigin: true,
             type: 'json',

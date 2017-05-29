@@ -2,22 +2,32 @@
  * Created by surajnew55 on 25/05/2017.
  */
 import React from 'react';
-import ReactMixing from 'react-mixing';
 import Auth from '../services/AuthService'
+
 
 export default class Login extends React.Component {
 
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
         this.state = {
-            user: '',
-            password: ''
+           formValues: {}
         };
     }
 
-    login(e) {
+    handleChange(event) {
+        event.preventDefault();
+        let formValues = this.state.formValues;
+        let name = event.target.name;
+        let value = event.target.value;
+
+        formValues[name] = value;
+        this.setState({formValues})
+    }
+
+
+     login(e) {
         e.preventDefault();
-        Auth.login(this.state.user, this.state.password)
+        Auth.login(this.state.formValues.user, this.state.formValues.password)
             .catch(function (err) {
                 alert("There's an error logging in");
                 console.log("Error logging in", err)
@@ -25,28 +35,30 @@ export default class Login extends React.Component {
     }
 
     render() {
-        return (
-            <div className="login jumbotron center-block">
-                <h1>Login</h1>
-                <form role="form">
-                    <div className="form-group">
-                        <label htmlFor="username">Username</label>
-                        <input type="text" valueLink={this.linkState('user')} className="form-control" id="username"
-                               placeholder="Username"/>
-                    </div>
-                    <div className="form-group">
-                        <label htmlFor="password">Password</label>
-                        <input type="password" valueLink={this.linkState('password')} className="form-control"
-                               id="password" ref="password" placeholder="Password"/>
-                    </div>
-                    <button type="submit" className="btn btn-default" onClick={this.login.bind(this)}>Submit</button>
-                </form>
+        return(
+        <div className="row">
+            <div className="four columns"></div>
+            <div className="four columns">
+                    <h1>Login</h1>
+                    <form>
+                        <div className="form-group">
+                            <label htmlFor="username">Username</label>
+                            <input name='user' type="text" value={this.state.formValues['user']} onChange={this.handleChange.bind(this)} className="form-control "
+                                   placeholder="Username"/>
+                        </div>
+                        <div className="form-group">
+                            <label htmlFor="password">Password</label>
+                            <input name="password" type="password" value={this.state.formValues['password']} onChange={this.handleChange.bind(this)}  className="form-control" placeholder="Password"/>
+                        </div>
+                        <button type="submit" className="btn btn-default" onClick={this.login.bind(this)}>Submit</button>
+                    </form>
             </div>
+            <div className="four columns"></div>
+        </div>
         );
     }
 }
 
-ReactMixing (Login.prototype, React.addons.LinkedStateMixing);
 
 
 
