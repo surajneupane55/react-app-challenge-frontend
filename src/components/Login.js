@@ -27,7 +27,7 @@ export default class Login extends React.Component {
 
      login(e) {
         e.preventDefault();
-        Auth.login(this.state.formValues.user, this.state.formValues.password)
+        Auth.login(this.state.formValues.email, this.state.formValues.password)
             .catch(function (err) {
                 alert("There's an error logging in");
                 console.log("Error logging in", err)
@@ -42,9 +42,9 @@ export default class Login extends React.Component {
                     <h1>Login</h1>
                     <form>
                         <div className="form-group">
-                            <label htmlFor="username">Username</label>
-                            <input name='user' type="text" value={this.state.formValues['user']} onChange={this.handleChange.bind(this)} className="form-control "
-                                   placeholder="Username"/>
+                            <label htmlFor="email">Email</label>
+                            <input name='email' type="text" value={this.state.formValues['email']} onChange={this.handleChange.bind(this)} className="form-control "
+                                   placeholder="Email"/>
                         </div>
                         <div className="form-group">
                             <label htmlFor="password">Password</label>

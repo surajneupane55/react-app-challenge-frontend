@@ -10,16 +10,15 @@ import LoginActions from '../actions/LoginActions';
 
 class AuthService {
 
-    login(username, password) {
+    login(email, password) {
+        console.log(email, password)
         return this.handleAuth(when(request({
-            url: LOGIN_URL,
+            url: 'http://localhost:3001/user_token',
             method: 'POST',
             crossOrigin:'true',
             type: 'json',
             data: {
-                username, password
-            }
-
+                "auth":{"email":email,"password":password}}
         })));
     }
 
@@ -27,22 +26,21 @@ class AuthService {
         LoginActions.logoutUser();
     }
 
-    signup(username, password, extra) {
+    signup(email, password) {
         return this.handleAuth(when(request({
-            url: SIGNUP_URL,
+            url: 'http://localhost:3001/users',
             method: 'POST',
             crossOrigin: true,
             type: 'json',
-            date: {
-                username, password, extra
-            }
+            data: {
+                "user":{"email":email,"password":password}            }
         })));
     }
 
     handleAuth(loginPromise) {
         return loginPromise
             .then(function(response){
-                var jwt = response.id_token;
+                var jwt = response.jwt;
                 LoginActions.loginUser(jwt);
                 return true;
             });

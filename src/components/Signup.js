@@ -15,11 +15,11 @@ export default class Signup extends React.Component {
 
     handleChangeevent(event){
         event.preventDefault();
-        let registerValue = this.state.registerValues;
+        let registerValues = this.state.registerValues;
         let name = event.target.name;
         let value = event.target.value;
 
-        registerValue[name] = value;
+        registerValues[name] = value;
         this.setState({registerValues})
 
     }
@@ -28,7 +28,8 @@ export default class Signup extends React.Component {
 
         signup(e) {
         e.preventDefault();
-        Auth.signup(this.state.registerValues)
+        console.log(this.state.registerValues);
+        Auth.signup(this.state.registerValues.email,this.state.registerValues.password, this.state.registerValues.conform)
             .catch(function(err) {
                 alert("There's an error logging in");
                 console.log("Error logging in", err);
@@ -43,16 +44,16 @@ export default class Signup extends React.Component {
                 <h1>Signup</h1>
                 <form>
                     <div className="form-group">
-                        <label htmlFor="username">Username</label>
-                        <input type="text" onChange={this.state.registerValues['user']} className="form-control" name="username" placeholder="Username" />
+                        <label htmlFor="username">Email</label>
+                        <input type="text" value={this.state.registerValues['email']} onChange={this.handleChangeevent.bind(this)} className="form-control" name="email" placeholder="email" />
                     </div>
                     <div className="form-group">
                         <label htmlFor="password">Password</label>
-                        <input type="password" onChange={this.state.registerValues['password']} className="form-control" name="password" id="password" ref="password" placeholder="Password" />
+                        <input type="password" value={this.state.registerValues['password']} onChange={this.handleChangeevent.bind(this)} className="form-control" name="password" id="password" ref="password" placeholder="Password" />
                     </div>
                     <div className="form-group">
                         <label htmlFor="password">Password again</label>
-                        <input type="password" onChange={this.state.registerValues['conform']} className="form-control" name="conform" placeholder="Password again" />
+                        <input type="password" value={this.state.registerValues['conform']} onChange={this.handleChangeevent.bind(this)} className="form-control" name="conform" placeholder="Password again" />
                     </div>
                     <button type="submit" className="btn btn-default" onClick={this.signup.bind(this)}>Submit</button>
                 </form>
