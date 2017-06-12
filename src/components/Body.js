@@ -13,30 +13,30 @@ export default class Body extends React.Component {
                     <div className="row">
                         <div className="six columns">
                             <table className="u-full-width">
-                            <thead>
-                            <tr>
-                                <th>Backend Technology</th>
+                                <thead>
+                                <tr>
+                                    <th>Backend Technology</th>
 
-                            </tr>
-                            </thead>
-                            <tbody>
-                            <tr>
-                                <td>Rails API</td>
-                            </tr>
-                            <tr>
-                                <td>Posgres</td>
-                            </tr>
-                            <tr>
-                                <td>Knock gem to handle JWT request</td>
-                            </tr>
-                            <tr>
-                                <td>Active model serializer(for) JSON response</td>
-                            </tr>
-                            <tr>
-                                <td>Heroku Cloud deployment</td>
-                            </tr>
-                            </tbody>
-                        </table>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr>
+                                    <td>Rails API</td>
+                                </tr>
+                                <tr>
+                                    <td>Posgres</td>
+                                </tr>
+                                <tr>
+                                    <td>Knock gem to handle JWT request</td>
+                                </tr>
+                                <tr>
+                                    <td>Active model serializer(for) JSON response</td>
+                                </tr>
+                                <tr>
+                                    <td>Heroku Cloud deployment</td>
+                                </tr>
+                                </tbody>
+                            </table>
                         </div>
                         <div className="six columns">
                             <table className="u-full-width">

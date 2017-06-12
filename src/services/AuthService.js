@@ -3,8 +3,6 @@
  */
 import request from 'reqwest';
 import when from 'when';
-import LOGIN_URL from '../constants/LoginConstants';
-import SIGNUP_URL from '../constants/LoginConstants';
 
 import LoginActions from '../actions/LoginActions';
 
