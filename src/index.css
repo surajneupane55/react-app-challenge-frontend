@@ -20,7 +20,7 @@ body {
 }
 
 .row-protected {
-    margin-right: 0px;
+    margin: 1px;
     height: 96px;
     background-color: #adb5bc;
     border-buttom: none;

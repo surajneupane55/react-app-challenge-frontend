@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom'
-import {  BrowserRouter as Router, Route, Redirect, withRouter } from 'react-router-dom'
+import {  BrowserRouter as Router, Route } from 'react-router-dom'
 import {createBrowserHistory} from 'history';
 import Layout from './components/Layout';
 import Login from './components/Login';

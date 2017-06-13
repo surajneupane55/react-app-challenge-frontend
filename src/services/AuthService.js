@@ -9,7 +9,6 @@ import LoginActions from '../actions/LoginActions';
 class AuthService {
 
     login(email, password) {
-        console.log(email, password)
         return this.handleAuth(when(request({
             url: 'http://localhost:3001/user_token',
             method: 'POST',
