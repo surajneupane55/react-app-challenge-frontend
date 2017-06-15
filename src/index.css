@@ -54,7 +54,6 @@ h6 {
 
 input.form-fixer {
     padding: 1px;
-    font-size: 19px;
     margin-top:16px;
     height:40px;
     background-color: #fafafa;
@@ -85,20 +84,51 @@ thead th {
 }
 
 
-tr td {
-    height: 72px;
+tbody tr td {
+    height: 72px !important;
     font-size: 16px;
     line-height: 24px;
     font-weight: 400;
     color: #505050;
+    padding-top:0px;
+    padding-bottom:0px;
     padding-left: 24px !important;
 
 }
 .fa{
     background-color:#ffffff;
+    font-size: 24px;
+    -webkit-text-fill-color:#909090;
+    height:24px;
+    width:24px;
+}
+.fa-trash-o{
+;
 }
 
 .td-space {
     width: 44px;
+
+}
+.cancel-btn {
+    color: #07f;
+    margin-top: 0px;
+}
+.save-btn {
+    background: #07f;
+    color:#ffffff;
+    font-size:16px;
+    font-weight:500;
+    margin-top: 0px;
+    margin-right: 5px;
+
+
+
+
+}
+.icon{
+    margin-right: 5px;
+
+
 
 }

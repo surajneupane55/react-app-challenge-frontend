@@ -44,11 +44,11 @@ export default class Login extends React.Component {
                         <div className="form-group">
                             <label htmlFor="email">Email</label>
                             <input name='email' type="text" value={this.state.formValues['email']} onChange={this.handleChange.bind(this)} className="form-control "
-                                   placeholder="Email"/>
+                                   placeholder="Email" required/>
                         </div>
                         <div className="form-group">
                             <label htmlFor="password">Password</label>
-                            <input name="password" type="password" value={this.state.formValues['password']} onChange={this.handleChange.bind(this)}  className="form-control" placeholder="Password"/>
+                            <input name="password" type="password" value={this.state.formValues['password']} onChange={this.handleChange.bind(this)}  className="form-control" placeholder="Password" required/>
                         </div>
                         <button type="submit" className="btn btn-default" onClick={this.login.bind(this)}>Submit</button>
                     </form>

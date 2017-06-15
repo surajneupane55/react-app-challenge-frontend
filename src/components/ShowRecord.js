@@ -2,29 +2,25 @@
  * Created by surajnew55 on 12/06/2017.
  */
 import React from 'react'
+import _ from 'lodash'
+import RecordListItem from './RecordItem'
+
 
 
 export default class Show extends React.Component {
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            isEditing: false
+        };
+    }
+    renderRecord() {
+        return _.map(this.props.records, (record) => <RecordListItem key={record.id} {...record} updateRecord={this.props.updateRecord} deleteRecord={this.props.deleteRecord} />);
+    }
+
 
         render() {
-        const records = this.props.allRecord;
-        const listItems = records.map((record) =>
-            <tr key={record.id}>
-                <td>
-                    {record.username}
-                </td>
-                <td>
-                    {record.email}
-                </td>
-                <td>
-                    {record.phone}
-                </td>
-                <td className="td-space"><i className="fa fa-pencil btn" aria-hidden="true"></i>
-                </td>
-                <td className="td-space"><i className="fa fa-trash-o btn " aria-hidden="true"></i></td>
-            </tr>
-        );
-
 
         return (
             <table>
@@ -37,11 +33,14 @@ export default class Show extends React.Component {
                     <th></th>
                 </tr>
                 </thead>
-                <tbody>
-                {listItems}
-                </tbody>
+                {this.renderRecord()}
             </table>
         );
+    }
+
+
+    onEditClick() {
+        this.setState({ isEditing: true });
     }
 
 }

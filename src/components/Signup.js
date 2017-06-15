@@ -45,15 +45,15 @@ export default class Signup extends React.Component {
                 <form>
                     <div className="form-group">
                         <label htmlFor="username">Email</label>
-                        <input type="text" value={this.state.registerValues['email']} onChange={this.handleChangeevent.bind(this)} className="form-control" name="email" placeholder="email" />
+                        <input type="text" value={this.state.registerValues['email']} onChange={this.handleChangeevent.bind(this)} className="form-control" name="email" placeholder="email" required/>
                     </div>
                     <div className="form-group">
                         <label htmlFor="password">Password</label>
-                        <input type="password" value={this.state.registerValues['password']} onChange={this.handleChangeevent.bind(this)} className="form-control" name="password" id="password" ref="password" placeholder="Password" />
+                        <input type="password" value={this.state.registerValues['password']} onChange={this.handleChangeevent.bind(this)} className="form-control" name="password" id="password" ref="password" placeholder="Password" required />
                     </div>
                     <div className="form-group">
                         <label htmlFor="password">Password again</label>
-                        <input type="password" value={this.state.registerValues['conform']} onChange={this.handleChangeevent.bind(this)} className="form-control" name="conform" placeholder="Password again" />
+                        <input type="password" value={this.state.registerValues['conform']} onChange={this.handleChangeevent.bind(this)} className="form-control" name="conform" placeholder="Password again" required/>
                     </div>
                     <button type="submit" className="btn btn-default" onClick={this.signup.bind(this)}>Submit</button>
                 </form>

@@ -23,7 +23,6 @@ export default class ProtectedApp extends React.Component {
     }
     createRecord(name, email, phone){
         let self = this;
-
         axios.post('http://localhost:3001/records',{
             "record":
                 {
@@ -56,6 +55,41 @@ export default class ProtectedApp extends React.Component {
             })
 
     }
+    updateRecord(name, email,phone,id){
+        let self = this;
+        const baseURL='http://localhost:3001/records/';
+        axios.patch(baseURL+id,{
+            'record':
+                {
+                    'username':name,
+                    'email':email,
+                    'phone':phone
+                }
+        })
+            .then(function()  {
+                self.backendCall();
+            })
+            .catch((error)=> {
+            console.log(error);
+        })
+    }
+
+    deleteRecord(id){
+        let self = this;
+        const baseURL='http://localhost:3001/records/';
+        axios.delete(baseURL+id)
+            .then(function() {
+                self.backendCall();
+            })
+            .catch((error) => {
+            console.log(error);
+        })
+
+    }
+
+
+
+
 
 
     render() {
@@ -73,7 +107,7 @@ export default class ProtectedApp extends React.Component {
                     <Create createRecord={this.createRecord.bind(this)}/>
 
                     <br/>
-                    <Show allRecord={this.state.listRecord} />
+                    <Show records={this.state.listRecord} updateRecord = {this.updateRecord.bind(this)} deleteRecord={this.deleteRecord.bind(this)}/>
 
                 </div>
 
