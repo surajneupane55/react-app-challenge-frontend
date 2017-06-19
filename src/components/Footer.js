@@ -10,7 +10,7 @@ export default class Footer extends React.Component {
             <footer>
                 <div className="container">
                     <div className="row">
-                        <h5>This is footer</h5>
+                        <h5>Coded by Suraj Neupane</h5>
                     </div>
                 </div>
             </footer>

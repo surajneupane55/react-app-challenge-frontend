@@ -126,6 +126,18 @@ tbody tr td {
 
 
 }
+.out-btn {
+    background: #3c3f41;
+    color:#ffffff;
+    font-size:16px;
+    font-weight:500;
+    margin-top: 0px;
+    margin-right: 5px;
+
+
+
+
+}
 .icon{
     margin-right: 5px;
 

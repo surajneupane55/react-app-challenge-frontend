@@ -16,6 +16,8 @@ import Header from './Header';
 
 
 export default class Layout extends React.Component {
+
+
     render() {
         return (
             <div className="App">
@@ -23,9 +25,9 @@ export default class Layout extends React.Component {
                     <img src={logo} className="App-logo" alt="logo" />
                     <h2>Welcome to React on Rails API</h2>
                 </div>
-                <Body />
+                <Body/>
                 <Header/><br/><br/>
-                <Footer />
+                <Footer/>
             </div>
         );
     }

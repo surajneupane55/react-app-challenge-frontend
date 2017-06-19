@@ -8,7 +8,9 @@ import React from 'react';
 import logo from '../img/log.jpg';
 import Create from './CreateRecord';
 import Show from './ShowRecord';
-import axios from 'axios'
+import axios from 'axios';
+import LoginActions from './LoginActions';
+
 
 
 
@@ -21,26 +23,37 @@ export default class ProtectedApp extends React.Component {
             listRecord: []
         };
     }
-    createRecord(name, email, phone){
-        let self = this;
-        axios.post('http://localhost:3001/records',{
-            "record":
-                {
-                    "username":name,
-                    "email":email,
-                    "phone":phone
+
+
+
+    createRecord(name, email, phone) {
+        if (LoginActions.loggedIn()) {
+            let self = this;
+            axios.post('http://localhost:3001/records', {
+                "record": {
+                    "username": name,
+                    "email": email,
+                    "phone": phone
                 }
-        })
-            .then(function()  {
-                self.backendCall();
             })
-            .catch((error) => {
-                console.log(error);
-            })
+                .then(function () {
+                    self.backendCall();
+                })
+                .catch((error) => {
+                    console.log(error);
+                })
+        }
+        else{
+            this.props.history.push('/login')
+        }
     }
 
     componentWillMount(){
-        this.backendCall()
+        if(LoginActions.loggedIn()) {
+            this.backendCall();
+        }
+
+
     }
 
     backendCall(){
@@ -56,7 +69,9 @@ export default class ProtectedApp extends React.Component {
 
     }
     updateRecord(name, email,phone,id){
-        let self = this;
+        if (LoginActions.loggedIn()) {
+
+            let self = this;
         const baseURL='http://localhost:3001/records/';
         axios.patch(baseURL+id,{
             'record':
@@ -73,33 +88,59 @@ export default class ProtectedApp extends React.Component {
             console.log(error);
         })
     }
+    else{
+            this.props.history.push('/login')
+        }
+    }
 
-    deleteRecord(id){
-        let self = this;
-        const baseURL='http://localhost:3001/records/';
-        axios.delete(baseURL+id)
-            .then(function() {
-                self.backendCall();
-            })
-            .catch((error) => {
-            console.log(error);
-        })
+    deleteRecord(id) {
+        if (LoginActions.loggedIn()) {
+
+            let self = this;
+            const baseURL = 'http://localhost:3001/records/';
+            axios.delete(baseURL + id)
+                .then(function () {
+                    self.backendCall();
+                })
+                .catch((error) => {
+                    console.log(error);
+                })
+
+        }
+        else{
+
+            this.props.history.push('/login')
+        }
 
     }
 
+    logOut() {
+        const jwt = localStorage;
+        if(jwt !=='')
+        {
+            localStorage.removeItem('jwt');
+            this.props.history.push('/')
 
+
+        }
+    }
 
 
 
 
     render() {
         return (
+            LoginActions.loggedIn() ?
             <div>
                 <div className="container">
                     <div className="header row-protected">
-                        <div className="col-md-12 col-protected">
+                        <div className="col-md-8 col-protected">
                             <img src={logo} alt="Mountain View"/><strong> Nord Software</strong>
                         </div>
+                        <div className="col-md-2 col-protected">
+                            <button type="submit" className="btn btn-default out-btn"onClick={this.logOut.bind(this)}>LogOut</button>
+                        </div>
+
                     </div>
                     <div className="row">
                         <h6 className="header-style"><strong>List of participants</strong></h6>
@@ -107,12 +148,12 @@ export default class ProtectedApp extends React.Component {
                     <Create createRecord={this.createRecord.bind(this)}/>
 
                     <br/>
-                    <Show records={this.state.listRecord} updateRecord = {this.updateRecord.bind(this)} deleteRecord={this.deleteRecord.bind(this)}/>
+                    <Show records={this.state.listRecord} updateRecord = {this.updateRecord.bind(this)} deleteRecord={this.deleteRecord.bind(this)} />
 
                 </div>
 
 
-            </div>
+            </div>: this.props.history.push('/login')
         );
     }
 }

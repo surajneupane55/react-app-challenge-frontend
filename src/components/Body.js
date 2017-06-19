@@ -50,13 +50,16 @@ export default class Body extends React.Component {
                                     <td>React</td>
                                 </tr>
                                 <tr>
-                                    <td>Skeleton CSS</td>
+                                    <td> React Router v4 </td>
                                 </tr>
                                 <tr>
-                                    <td>Flux</td>
+                                    <td>Bootstrap</td>
                                 </tr>
                                 <tr>
                                     <td>Font awesome</td>
+                                </tr>
+                                <tr>
+                                    <td>JWT</td>
                                 </tr>
                                 </tbody>
                             </table>

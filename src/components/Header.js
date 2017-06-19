@@ -13,8 +13,8 @@ export default class Header extends React.Component {
                 <br/>
                 <div className="container">
                     <div className="row">
-                        <Link to='login' className="button six columns">SignIn</Link>
-                        <Link to='signup' className="button six columns">SignUp</Link>
+                        <Link to='login' className="btn button-primary"><strong><h5>SignIn</h5></strong></Link>
+                        {/*<Link to='signup'  className="btn  six columns" disabled>SignUp</Link>*/}
                     </div>
                 </div>
             </header>

@@ -1,15 +1,20 @@
-/**
+/*
+/!**
  * Created by surajnew55 on 25/05/2017.
- */
+ *!/
 import React from 'react';
-import Auth from '../services/AuthService'
+
+import request from 'reqwest';
+import when from 'when';
+
 
 export default class Signup extends React.Component {
 
     constructor(props) {
         super(props);
         this.state = {
-            registerValues: {}
+            registerValues: {},
+
         };
     }
 
@@ -26,17 +31,42 @@ export default class Signup extends React.Component {
 
 
 
-        signup(e) {
+        formHandler(e) {
         e.preventDefault();
         console.log(this.state.registerValues);
-        Auth.signup(this.state.registerValues.email,this.state.registerValues.password, this.state.registerValues.conform)
+        this.signUp(this.state.registerValues.email,this.state.registerValues.password, this.state.registerValues.conform)
             .catch(function(err) {
-                alert("There's an error logging in");
                 console.log("Error logging in", err);
             });
     }
+    signUp(email, password) {
+        return this.handleAuth(when(request({
+            url: 'http://localhost:3001/users',
+            method: 'POST',
+            crossOrigin: true,
+            type: 'json',
+            data: {
+                "user":{"email":email,"password":password}            }
+        })));
+    }
+    handleAuth(signUpPromise) {
+        let self = this;
+        return signUpPromise
+            .then(function(response){
+                console.log(response);
+                self.redirectSignUp();
+
+            });
+    }
+    redirectSignUp(){
+        this.props.history.push('/login');
+    }
+
+
+
 
     render() {
+
         return (
         <div className="row">
             <div className="three column"></div>
@@ -55,7 +85,7 @@ export default class Signup extends React.Component {
                         <label htmlFor="password">Password again</label>
                         <input type="password" value={this.state.registerValues['conform']} onChange={this.handleChangeevent.bind(this)} className="form-control" name="conform" placeholder="Password again" required/>
                     </div>
-                    <button type="submit" className="btn btn-default" onClick={this.signup.bind(this)}>Submit</button>
+                    <button type="submit" className="btn btn-default" onClick={this.formHandler.bind(this)}>Submit</button>
                 </form>
             </div>
             <div className="three column"></div>
@@ -65,3 +95,4 @@ export default class Signup extends React.Component {
     }
 }
 
+*/
