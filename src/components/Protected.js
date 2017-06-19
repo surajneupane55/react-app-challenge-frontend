@@ -26,16 +26,30 @@ export default class ProtectedApp extends React.Component {
 
 
 
+
+
+
+
     createRecord(name, email, phone) {
+        const config = {
+            headers: {'Authorization': "Bearer " + localStorage.getItem('jwt')}
+        };
+        const record = {
+            'record':
+                {
+                    'username':name,
+                    'email':email,
+                    'phone':phone
+                }
+
+        };
+
         if (LoginActions.loggedIn()) {
             let self = this;
-            axios.post('http://localhost:3001/records', {
-                "record": {
-                    "username": name,
-                    "email": email,
-                    "phone": phone
-                }
-            })
+            axios.post('http://localhost:3001/records',
+                record,
+                config
+            )
                 .then(function () {
                     self.backendCall();
                 })
@@ -57,7 +71,13 @@ export default class ProtectedApp extends React.Component {
     }
 
     backendCall(){
-        axios.get('http://localhost:3001/records')
+         var config = {
+            headers: {'Authorization': "Bearer " + localStorage.getItem('jwt')}
+        };
+
+
+        axios.get('http://localhost:3001/records', config
+            )
             .then((response) => {
                 this.setState({
                     listRecord: response.data
@@ -69,18 +89,26 @@ export default class ProtectedApp extends React.Component {
 
     }
     updateRecord(name, email,phone,id){
-        if (LoginActions.loggedIn()) {
-
-            let self = this;
-        const baseURL='http://localhost:3001/records/';
-        axios.patch(baseURL+id,{
+        const config = {
+            headers: {'Authorization': "Bearer " + localStorage.getItem('jwt')}
+        };
+        const record = {
             'record':
                 {
                     'username':name,
                     'email':email,
                     'phone':phone
                 }
-        })
+
+        };
+        if (LoginActions.loggedIn()) {
+
+            let self = this;
+        const baseURL='http://localhost:3001/records/';
+        axios.patch(baseURL+id,
+            record,
+            config
+        )
             .then(function()  {
                 self.backendCall();
             })
@@ -94,11 +122,14 @@ export default class ProtectedApp extends React.Component {
     }
 
     deleteRecord(id) {
+        const config = {
+            headers: {'Authorization': "Bearer " + localStorage.getItem('jwt')}
+        };
         if (LoginActions.loggedIn()) {
 
             let self = this;
             const baseURL = 'http://localhost:3001/records/';
-            axios.delete(baseURL + id)
+            axios.delete(baseURL + id, config)
                 .then(function () {
                     self.backendCall();
                 })
@@ -130,7 +161,6 @@ export default class ProtectedApp extends React.Component {
 
     render() {
         return (
-            LoginActions.loggedIn() ?
             <div>
                 <div className="container">
                     <div className="header row-protected">
@@ -153,7 +183,7 @@ export default class ProtectedApp extends React.Component {
                 </div>
 
 
-            </div>: this.props.history.push('/login')
+            </div>
         );
     }
 }

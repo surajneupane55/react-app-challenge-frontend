@@ -59,7 +59,7 @@ export default class Body extends React.Component {
                                     <td>Font awesome</td>
                                 </tr>
                                 <tr>
-                                    <td>JWT</td>
+                                    <td>JWT/Axios</td>
                                 </tr>
                                 </tbody>
                             </table>

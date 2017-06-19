@@ -103,7 +103,7 @@ tbody tr td {
     width:24px;
 }
 .fa-trash-o{
-;
+
 }
 
 .td-space {
@@ -141,6 +141,22 @@ tbody tr td {
 .icon{
     margin-right: 5px;
 
+}
+.arrow{
+    font-size: 16px;
+    height:24px;
+    width:24px;
 
+
+}
+.button{
+    margin: 0px;
+    margin-bottom: 0px;
+    padding: 0px;
+    border:none;
+    backckground:none;
+    line-height:0px;
+    height:24px;
+    width:24px;
 
 }

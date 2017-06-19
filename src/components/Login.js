@@ -9,29 +9,13 @@ import when from 'when';
 
 export default class Login extends React.Component {
 
-    constructor(props) {
-        super(props);
-        this.state = {
-           formValues: {},
-        };
-    }
-
-    handleChange(event) {
-        event.preventDefault();
-        let formValues = this.state.formValues;
-        let name = event.target.name;
-        let value = event.target.value;
-
-        formValues[name] = value;
-        this.setState({formValues})
-    }
 
 
      formHandler(e) {
         e.preventDefault();
-        this.login(this.state.formValues.email, this.state.formValues.password)
+        this.login(this.email.value, this.password.value)
             .catch(function (err) {
-                alert("There's an error logging in");
+                alert("Either username or password is not valid.");
                 console.log("Error logging in", err)
             });
     }
@@ -82,12 +66,11 @@ export default class Login extends React.Component {
                     <form>
                         <div className="form-group">
                             <label htmlFor="email">Email</label>
-                            <input name='email' type="text" value={this.state.formValues['email']} onChange={this.handleChange.bind(this)} className="form-control "
-                                   placeholder="Email" required/>
+                            <input type="text"  ref={(input) => this.email = input}  className="form-control " placeholder="Email" required/>
                         </div>
                         <div className="form-group">
                             <label htmlFor="password">Password</label>
-                            <input name="password" type="password" value={this.state.formValues['password']} onChange={this.handleChange.bind(this)}  className="form-control" placeholder="Password" required/>
+                            <input type="password"  ref={(input) => this.password = input}  className="form-control" placeholder="Password" required/>
                         </div>
                         <button type="submit" className="btn btn-default" onClick={this.formHandler.bind(this)}>Submit</button>
                     </form>
@@ -98,6 +81,7 @@ export default class Login extends React.Component {
                 Password: <h4><strong>securepassword</strong></h4>
 
             </div>
+
         </div>
         );
     }
