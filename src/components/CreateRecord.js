@@ -11,15 +11,18 @@ export default class Create extends React.Component {
             <form id="add-form" onSubmit={this.handleCreate.bind(this)}>
                 <div className="row table-row">
                     <div className="col-md-3">
-                        <input className="form-fixer"  type="text" placeholder="  Full name"  ref={(input) => this.name = input}
+                        <input className="form-fixer" type="text" placeholder="  Full name"
+                               ref={(input) => this.name = input}
                                required/>
                     </div>
                     <div className="col-md-3">
-                        <input className="form-fixer" type="text" placeholder="  E-mail address" ref={(input)=> this.email = input}
+                        <input className="form-fixer" type="text" placeholder="  E-mail address"
+                               ref={(input) => this.email = input}
                                required/>
                     </div>
                     <div className="col-md-3">
-                        <input className="form-fixer" type="text" placeholder="  Phone" ref={(input)=> this.phone = input}
+                        <input className="form-fixer" type="text" placeholder="  Phone"
+                               ref={(input) => this.phone = input}
                                required/>
                     </div>
                     <div className="col-md-1">
@@ -35,16 +38,11 @@ export default class Create extends React.Component {
 
     handleCreate(event) {
         event.preventDefault();
-        this.props.createRecord (this.name.value, this.email.value, this.phone.value);
-        this.name.value='';
-        this.email.value='';
-        this.phone.value='';
+        this.props.createRecord(this.name.value, this.email.value, this.phone.value);
+        this.name.value = '';
+        this.email.value = '';
+        this.phone.value = '';
     }
-
-
-
-
-
 
 
 }

@@ -15,19 +15,26 @@ export default class RecordListItem extends React.Component {
             return (
                 <tr>
                     <td>
-                        <input className="form-fixer" type="text" defaultValue={ username} ref={(input) => this.name = input} required/>
+                        <input className="form-fixer" type="text" defaultValue={ username}
+                               ref={(input) => this.name = input} required/>
                     </td>
                     <td>
-                        <input className="form-fixer" type="text" defaultValue={ email} ref={(input) => this.email = input} required/>
+                        <input className="form-fixer" type="text" defaultValue={ email}
+                               ref={(input) => this.email = input} required/>
                     </td>
                     <td>
-                            <input className="form-fixer" type="text" defaultValue={ phone} ref={(input) => this.phone = input} required/>
+                        <input className="form-fixer" type="text" defaultValue={ phone}
+                               ref={(input) => this.phone = input} required/>
                     </td>
                     <td>
-                        <button type="submit" className="btn btn-default cancel-btn" onClick={this.onCancelClick.bind(this)}>Cancel</button>
+                        <button type="submit" className="btn btn-default cancel-btn"
+                                onClick={this.onCancelClick.bind(this)}>Cancel
+                        </button>
                     </td>
                     <td>
-                        <button type="submit" className="btn btn-default save-btn"onClick={this.handleUpdate.bind(this)}>Save</button>
+                        <button type="submit" className="btn btn-default save-btn"
+                                onClick={this.handleUpdate.bind(this)}>Save
+                        </button>
                     </td>
                 </tr>
             );
@@ -47,10 +54,12 @@ export default class RecordListItem extends React.Component {
                 </td>
 
                 <td className="td-space">
-                    <button className="button"><i className="fa fa-pencil icon" aria-hidden="true" onClick={this.onEditClick.bind(this)}></i></button>
+                    <button className="button"><i className="fa fa-pencil icon" aria-hidden="true"
+                                                  onClick={this.onEditClick.bind(this)}></i></button>
                 </td>
                 <td className="td-space">
-                    <button className="button"> <i className="fa fa-trash-o icon" aria-hidden="true" onClick={this.handleDelete.bind(this)}></i></button>
+                    <button className="button"><i className="fa fa-trash-o icon" aria-hidden="true"
+                                                  onClick={this.handleDelete.bind(this)}></i></button>
                 </td>
             </tr>
 
@@ -79,14 +88,14 @@ export default class RecordListItem extends React.Component {
 
     handleUpdate(event) {
         event.preventDefault();
-        this.props.updateRecord (this.name.value, this.email.value, this.phone.value, this.props.id);
-        this.setState({isEditing:false});
+        this.props.updateRecord(this.name.value, this.email.value, this.phone.value, this.props.id);
+        this.setState({isEditing: false});
     }
 
-    handleDelete(event){
-            event.preventDefault();
-            this.props.deleteRecord(this.props.id)
-            this.setState({isEditing: false});
+    handleDelete(event) {
+        event.preventDefault();
+        this.props.deleteRecord(this.props.id)
+        this.setState({isEditing: false});
 
 
     }

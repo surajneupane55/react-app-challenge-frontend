@@ -5,13 +5,13 @@ import React from 'react';
 
 import request from 'reqwest';
 import when from 'when';
+import apiImage from '../img/react_on_rails_api .png'
 
 
 export default class Login extends React.Component {
 
 
-
-     formHandler(e) {
+    formHandler(e) {
         e.preventDefault();
         this.login(this.email.value, this.password.value)
             .catch(function (err) {
@@ -19,21 +19,23 @@ export default class Login extends React.Component {
                 console.log("Error logging in", err)
             });
     }
+
     login(email, password) {
         return this.handleAuth(when(request({
             url: 'http://localhost:3001/user_token',
             method: 'POST',
-            crossOrigin:'true',
+            crossOrigin: 'true',
             type: 'json',
             data: {
-                "auth":{"email":email,"password":password}}
+                "auth": {"email": email, "password": password}
+            }
         })));
     }
 
     handleAuth(loginPromise) {
-        let self =this;
+        let self = this;
         return loginPromise
-            .then(function(response){
+            .then(function (response) {
                 var jwt = response.jwt;
                 localStorage.removeItem(jwt);
                 localStorage.setItem('jwt', jwt);
@@ -42,47 +44,59 @@ export default class Login extends React.Component {
             });
     }
 
-    loggedIn(){
+    loggedIn() {
         let jwt = localStorage.getItem('jwt');
-        if(jwt !=='') {
+        if (jwt !== '') {
             return false;
         }
         return true;
     }
 
-    redirectLogin(){
-    this.props.history.push('/protected')
+    redirectLogin() {
+        this.props.history.push('/protected')
     }
 
 
     render() {
 
 
-        return(
-        <div className="row">
-            <div className="four columns"></div>
-            <div className="four columns">
+        return (
+            <div className="row">
+                <div className="three columns">
                     <h1>Login</h1>
                     <form>
                         <div className="form-group">
                             <label htmlFor="email">Email</label>
-                            <input type="text"  ref={(input) => this.email = input}  className="form-control " placeholder="Email" required/>
+                            <input type="text" ref={(input) => this.email = input} className="form-control "
+                                   placeholder="Email" required/>
                         </div>
                         <div className="form-group">
                             <label htmlFor="password">Password</label>
-                            <input type="password"  ref={(input) => this.password = input}  className="form-control" placeholder="Password" required/>
+                            <input type="password" ref={(input) => this.password = input} className="form-control"
+                                   placeholder="Password" required/>
                         </div>
-                        <button type="submit" className="btn btn-default" onClick={this.formHandler.bind(this)}>Submit</button>
+                        <button type="submit" className="btn btn-default" onClick={this.formHandler.bind(this)}>Submit
+                        </button>
                     </form>
-            </div>
-            <div className="four columns">
-                You can log in with default User below: <br/><br/>
-                Email: <h4><strong>abc@123.com</strong></h4><br/>
-                Password: <h4><strong>securepassword</strong></h4>
+                </div>
+                <div className="two columns">
+                    <br/>
+                    <br/>
+
+                    Default User <br/>
+                    Email: <h5><strong>abc@123.com</strong></h5><br/>
+                    Password: <h6><strong>securepassword</strong></h6>
+
+                </div>
+                <div className="three columns">
+                </div>
+                <div className="three columns">
+                    <img src={apiImage} alt="api"/>
+                </div>
+
 
             </div>
 
-        </div>
         );
     }
 }

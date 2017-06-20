@@ -5,19 +5,16 @@
  * Created by surajnew55 on 24/05/2017.
  */
 import React from 'react';
-import logo from '../img/log.jpg';
+import logo from '../img/nord_logo.jpg';
 import Create from './CreateRecord';
 import Show from './ShowRecord';
 import axios from 'axios';
 import LoginActions from './LoginActions';
 
 
-
-
-
 export default class ProtectedApp extends React.Component {
 
-    constructor(){
+    constructor() {
         super();
         this.state = {
             listRecord: []
@@ -25,22 +22,16 @@ export default class ProtectedApp extends React.Component {
     }
 
 
-
-
-
-
-
     createRecord(name, email, phone) {
         const config = {
             headers: {'Authorization': "Bearer " + localStorage.getItem('jwt')}
         };
         const record = {
-            'record':
-                {
-                    'username':name,
-                    'email':email,
-                    'phone':phone
-                }
+            'record': {
+                'username': name,
+                'email': email,
+                'phone': phone
+            }
 
         };
 
@@ -57,66 +48,71 @@ export default class ProtectedApp extends React.Component {
                     console.log(error);
                 })
         }
-        else{
+        else {
             this.props.history.push('/login')
         }
     }
 
-    componentWillMount(){
-        if(LoginActions.loggedIn()) {
+    componentWillMount() {
+        if (LoginActions.loggedIn()) {
             this.backendCall();
         }
 
 
     }
 
-    backendCall(){
-         var config = {
+    backendCall() {
+        var config = {
             headers: {'Authorization': "Bearer " + localStorage.getItem('jwt')}
         };
 
 
         axios.get('http://localhost:3001/records', config
-            )
+        )
             .then((response) => {
-                this.setState({
-                    listRecord: response.data
-                });
+            this.updateState(response);
             })
             .catch((error) => {
                 console.log(error);
             })
 
     }
-    updateRecord(name, email,phone,id){
+    updateState(response){
+        this.setState({
+            listRecord: response.data
+        });
+
+    }
+
+
+    updateRecord(name, email, phone, id) {
         const config = {
             headers: {'Authorization': "Bearer " + localStorage.getItem('jwt')}
         };
         const record = {
-            'record':
-                {
-                    'username':name,
-                    'email':email,
-                    'phone':phone
-                }
+            'record': {
+                'username': name,
+                'email': email,
+                'phone': phone
+            }
 
         };
         if (LoginActions.loggedIn()) {
 
             let self = this;
-        const baseURL='http://localhost:3001/records/';
-        axios.patch(baseURL+id,
-            record,
-            config
-        )
-            .then(function()  {
-                self.backendCall();
-            })
-            .catch((error)=> {
-            console.log(error);
-        })
-    }
-    else{
+            const baseURL = 'http://localhost:3001/records/';
+            axios.patch(baseURL + id,
+                record,
+                config
+            )
+                .then(function () {
+                    self.backendCall();
+                })
+                .catch((error) => {
+                    console.log(error);
+                })
+        }
+        else {
             this.props.history.push('/login')
         }
     }
@@ -138,7 +134,7 @@ export default class ProtectedApp extends React.Component {
                 })
 
         }
-        else{
+        else {
 
             this.props.history.push('/login')
         }
@@ -147,16 +143,13 @@ export default class ProtectedApp extends React.Component {
 
     logOut() {
         const jwt = localStorage;
-        if(jwt !=='')
-        {
+        if (jwt !== '') {
             localStorage.removeItem('jwt');
             this.props.history.push('/')
 
 
         }
     }
-
-
 
 
     render() {
@@ -168,7 +161,9 @@ export default class ProtectedApp extends React.Component {
                             <img src={logo} alt="Mountain View"/><strong> Nord Software</strong>
                         </div>
                         <div className="col-md-2 col-protected">
-                            <button type="submit" className="btn btn-default out-btn"onClick={this.logOut.bind(this)}>LogOut</button>
+                            <button type="submit" className="btn btn-default out-btn" onClick={this.logOut.bind(this)}>
+                                LogOut
+                            </button>
                         </div>
 
                     </div>
@@ -178,7 +173,8 @@ export default class ProtectedApp extends React.Component {
                     <Create createRecord={this.createRecord.bind(this)}/>
 
                     <br/>
-                    <Show records={this.state.listRecord} updateRecord = {this.updateRecord.bind(this)} deleteRecord={this.deleteRecord.bind(this)} />
+                    <Show records={this.state.listRecord} updateRecord={this.updateRecord.bind(this)}
+                          deleteRecord={this.deleteRecord.bind(this)}/>
 
                 </div>
 

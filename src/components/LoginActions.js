@@ -7,10 +7,9 @@ export default {
 
     loggedIn: () => {
         let jwt = localStorage.getItem('jwt');
-            if(jwt !==null)
-            {
-                return true;
-            }
-            return false;
+        if (jwt !== null) {
+            return true;
+        }
+        return false;
     }
 }

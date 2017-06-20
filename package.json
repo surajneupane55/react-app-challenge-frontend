@@ -3,8 +3,6 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "flux": "^3.1.2",
-    "formsy-react": "^0.19.2",
     "history": "^4.6.1",
     "jwt-decode": "^2.2.0",
     "react": "^15.5.4",
@@ -12,7 +10,6 @@
     "react-mixin": "^2.0.2",
     "react-router": "^4.1.1",
     "react-router-dom": "^4.1.1",
-    "react-validation": "^2.10.9",
     "reqwest": "^2.0.5",
     "when": "^3.7.8",
     "lodash": "latest"
