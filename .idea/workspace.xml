@@ -1,16 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="0487d6a0-9075-442c-85ee-70d32823d8fb" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/img/react_on_rails_api.png" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/img/react_on_rails_api .png" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/CreateRecord.js" afterPath="$PROJECT_DIR$/src/components/CreateRecord.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/Login.js" afterPath="$PROJECT_DIR$/src/components/Login.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/Protected.js" afterPath="$PROJECT_DIR$/src/components/Protected.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/RecordItem.js" afterPath="$PROJECT_DIR$/src/components/RecordItem.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/ShowRecord.js" afterPath="$PROJECT_DIR$/src/components/ShowRecord.js" />
-    </list>
+    <list default="true" id="0487d6a0-9075-442c-85ee-70d32823d8fb" name="Default" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -481,12 +472,12 @@
       <workItem from="1497627023131" duration="10778000" />
       <workItem from="1497781353232" duration="10165000" />
       <workItem from="1497860339812" duration="25150000" />
-      <workItem from="1497944686183" duration="20622000" />
+      <workItem from="1497944686183" duration="20790000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="301307000" />
+    <option name="totallyTimeSpent" value="301475000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
