@@ -25,7 +25,7 @@ export default class RecordListItem extends React.Component {
             errors['name']='Cannot be empty';
         }
         if(typeof fields['name'] !== "undefined"){
-            if(!fields['name'].match(/^[a-zA-Z]+$/)){
+            if(!fields['name'].match(/^[a-z ,.'-]+$/i)){
                 formIsValid=false;
                 errors['name'] = 'Name must be alphabets';
             }
@@ -72,7 +72,7 @@ export default class RecordListItem extends React.Component {
         if(this.handleValidation()) {
             this.handleUpdate()
         }else{
-            alert('Please input correct value in yout Form.')
+            alert('Please input correct value in your Form.')
         }
     }
     handleChange(field, e){

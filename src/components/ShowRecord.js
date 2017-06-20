@@ -35,7 +35,7 @@ export default class Show extends React.Component {
         var itemsList = [];
         _.map(this.props.records, (record) => itemsList.push(record));
         itemsList.sort(function (a, b) {
-            return a.username > b.username
+            return a.username.toLowerCase() > b.username.toLowerCase()
         });
         return itemsList;
 

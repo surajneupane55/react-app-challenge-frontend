@@ -21,7 +21,7 @@ export default class Create extends React.Component {
         //name
 
         if(typeof fields['name'] !=='undefined'){
-            if(!fields['name'].match(/^[a-zA-Z]+$/)){
+            if(!fields['name'].match(/^[a-z ,.'-]+$/i)){
                 formIsValid=false;
                 errors['name'] = 'Only Alphabets';
             }
