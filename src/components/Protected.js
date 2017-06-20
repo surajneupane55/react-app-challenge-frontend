@@ -37,7 +37,8 @@ export default class ProtectedApp extends React.Component {
 
         if (LoginActions.loggedIn()) {
             let self = this;
-            axios.post('http://localhost:3001/records',
+
+            axios.post('https://boiling-scrubland-97450.herokuapp.com/records',
                 record,
                 config
             )
@@ -67,7 +68,7 @@ export default class ProtectedApp extends React.Component {
         };
 
 
-        axios.get('http://localhost:3001/records', config
+        axios.get('https://boiling-scrubland-97450.herokuapp.com/records', config
         )
             .then((response) => {
             this.updateState(response);
@@ -100,7 +101,7 @@ export default class ProtectedApp extends React.Component {
         if (LoginActions.loggedIn()) {
 
             let self = this;
-            const baseURL = 'http://localhost:3001/records/';
+            const baseURL = 'https://boiling-scrubland-97450.herokuapp.com/records/';
             axios.patch(baseURL + id,
                 record,
                 config
@@ -124,7 +125,7 @@ export default class ProtectedApp extends React.Component {
         if (LoginActions.loggedIn()) {
 
             let self = this;
-            const baseURL = 'http://localhost:3001/records/';
+            const baseURL = 'https://boiling-scrubland-97450.herokuapp.com/records/';
             axios.delete(baseURL + id, config)
                 .then(function () {
                     self.backendCall();

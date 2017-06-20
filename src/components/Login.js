@@ -5,7 +5,7 @@ import React from 'react';
 
 import request from 'reqwest';
 import when from 'when';
-import apiImage from '../img/react_on_rails_api .png'
+import apiImage from '../img/react_on_rails_api.png'
 
 
 export default class Login extends React.Component {
@@ -22,7 +22,7 @@ export default class Login extends React.Component {
 
     login(email, password) {
         return this.handleAuth(when(request({
-            url: 'http://localhost:3001/user_token',
+            url: 'https://boiling-scrubland-97450.herokuapp.com/user_token',
             method: 'POST',
             crossOrigin: 'true',
             type: 'json',
@@ -85,7 +85,7 @@ export default class Login extends React.Component {
 
                     Default User <br/>
                     Email: <h5><strong>abc@123.com</strong></h5><br/>
-                    Password: <h6><strong>securepassword</strong></h6>
+                    Password: <h5><strong>securepassword</strong></h5>
 
                 </div>
                 <div className="three columns">
