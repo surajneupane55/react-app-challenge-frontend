@@ -34,7 +34,6 @@ export default class Show extends React.Component {
 
         var itemsList = [];
         _.map(this.props.records, (record) => itemsList.push(record));
-        console.log(itemsList);
         itemsList.sort(function (a, b) {
 
             //join first+last name and apply toLowerCase and compare
