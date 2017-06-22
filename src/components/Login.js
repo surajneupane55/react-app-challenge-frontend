@@ -22,7 +22,7 @@ export default class Login extends React.Component {
 
     login(email, password) {
         return this.handleAuth(when(request({
-            url: 'https://arcane-oasis-17502.herokuapp.com/user_token',
+            url: 'http://localhost:3001/user_token',
             method: 'POST',
             crossOrigin: 'true',
             type: 'json',

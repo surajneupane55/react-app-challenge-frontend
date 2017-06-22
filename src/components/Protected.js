@@ -38,7 +38,7 @@ export default class ProtectedApp extends React.Component {
         if (LoginActions.loggedIn()) {
             let self = this;
 
-            axios.post('https://arcane-oasis-17502.herokuapp.com/records',
+            axios.post('http://localhost:3001/records',
                 record,
                 config
             )
@@ -68,7 +68,7 @@ export default class ProtectedApp extends React.Component {
         };
 
 
-        axios.get('https://arcane-oasis-17502.herokuapp.com/records', config
+        axios.get('http://localhost:3001/records', config
         )
             .then((response) => {
             this.updateState(response);
@@ -101,7 +101,7 @@ export default class ProtectedApp extends React.Component {
         if (LoginActions.loggedIn()) {
 
             let self = this;
-            const baseURL = 'https://arcane-oasis-17502.herokuapp.com/records/';
+            const baseURL = 'http://localhost:3001/records/';
             axios.patch(baseURL + id,
                 record,
                 config
@@ -125,7 +125,7 @@ export default class ProtectedApp extends React.Component {
         if (LoginActions.loggedIn()) {
 
             let self = this;
-            const baseURL = 'https://arcane-oasis-17502.herokuapp.com/records/';
+            const baseURL = 'http://localhost:3001/records/';
             axios.delete(baseURL + id, config)
                 .then(function () {
                     self.backendCall();
